@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marius.spix@web.de</email>
+		<name>Marius Spix</name>
+	</maintainer>
+	<longdescription lang="en">
+Anura is a fully-featured game engine, free for commercial and non-commercial use.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">anura-engine/anura</remote-id>
+	</upstream>
+</pkgmetadata>

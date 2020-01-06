@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Argentum Age
+GenericName=Argentum Age
+Icon=argentum-age
+Exec=/bin/bash -c "cd /usr/lib/anura; ./anura --module=citadel"
+Type=Application
+Categories=Game;BoardGame;
