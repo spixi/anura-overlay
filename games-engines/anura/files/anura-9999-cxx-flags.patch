@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 4796c321..113f5c69 100644
+--- a/Makefile
++++ b/Makefile
+@@ -52,7 +52,7 @@ ifneq ($(USE_LUA), yes)
+ USE_LUA=no
+ endif
+ 
+-BASE_CXXFLAGS += -Wall -Werror
++BASE_CXXFLAGS += -Wall -Werror -Wno-literal-suffix -Wno-sign-compare
+ 
+ ifneq (,$(findstring clang, `$(CXX)`))
+ SANITIZE_UNDEFINED=

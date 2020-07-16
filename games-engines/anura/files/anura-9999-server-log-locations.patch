@@ -1,0 +1,58 @@
+diff --git a/src/tbs_bot.cpp b/src/tbs_bot.cpp
+index e40fbda0..61109f9c 100644
+--- a/src/tbs_bot.cpp
++++ b/src/tbs_bot.cpp
+@@ -32,6 +32,9 @@
+ #include "profile_timer.hpp"
+ #include "tbs_bot.hpp"
+ #include "tbs_web_server.hpp"
++#include <sys/types.h>
++#include <unistd.h>
++#include <pwd.h>
+ 
+ namespace tbs
+ {
+@@ -162,7 +165,8 @@ private:
+ 
+ 		variant msg = callable->queryValue("message");
+ 		LOG_INFO("BOT: @" << profile::get_tick_time() << " GOT RESPONSE: " << type << ": " << msg.write_json());
+-		runGarbageCollectionDebug("server-gc.txt");
++		struct passwd *pw = getpwuid(getuid());
++		runGarbageCollectionDebug(std::string(pw->pw_dir).append("/anura-server-gc.txt").c_str());
+ 		//reapGarbageCollection();
+ 
+ 		if(msg.is_map() && msg["type"] == variant("player_quit")) {
+diff --git a/src/tbs_internal_server.cpp b/src/tbs_internal_server.cpp
+index 94ff814d..e470f939 100644
+--- a/src/tbs_internal_server.cpp
++++ b/src/tbs_internal_server.cpp
+@@ -44,6 +44,8 @@
+ #include "uuid.hpp"
+ #include "variant_utils.hpp"
+ #include "wml_formula_callable.hpp"
++#include <unistd.h>
++#include <pwd.h>
+ 
+ PREF_STRING(tbs_server_child_args, "", "Arguments to pass along to the tbs spawned child");
+ 
+@@ -164,8 +166,9 @@ bool create_utility_process(const std::string& app, const std::vector<std::strin
+ 	//...
+ 	g_child_pid = fork();
+ 	if(g_child_pid == 0) {
+-		FILE* fout = std::freopen("stdout_server.txt","w", stdout);
+-		FILE* ferr = std::freopen("stderr_server.txt","w", stderr);
++		struct passwd *pw = getpwuid(getuid());
++		FILE* fout = std::freopen(std::string(pw->pw_dir).append("/anura-stdout_server.txt").c_str(),"w", stdout);
++		FILE* ferr = std::freopen(std::string(pw->pw_dir).append("/anura-stderr_server.txt").c_str(),"w", stderr);
+ 		std::cerr.sync_with_stdio(true);
+ 
+ 		std::vector<char*> args;
+@@ -383,7 +386,7 @@ void terminate_utility_process(bool* complete=nullptr)
+ 			args.push_back(formatter() << "--module=" << module::get_module_name());
+ 			args.push_back(formatter() << "--tbs-server-save-replay-file=" << preferences::user_data_path() << "/local-replays.cfg");
+ 			args.push_back("--tbs-server-local=true");
+-			args.push_back("--log-file=server-log.txt");
++			args.push_back("--log-file=~/anura-server-log.txt");
+ 			args.push_back("--log-level=debug");
+ 			args.push_back("--no-tbs-server");
+ 			args.push_back("--quit-server-after-game");

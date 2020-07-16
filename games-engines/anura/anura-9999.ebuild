@@ -32,6 +32,11 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-cxx-flags.patch
+	"${FILESDIR}"/${PN}-9999-server-log-locations.patch
+)
+
 src_unpack() {
 	unpack ${A}
 	mv anura-trunk ${P}
