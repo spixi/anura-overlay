@@ -24,6 +24,7 @@ RDEPEND="
 	>=media-libs/sdl2-2.0.12
 	media-libs/freetype
 	media-libs/glew
+	media-libs/glm
 	media-libs/libpng
 	x11-libs/cairo
 	sys-libs/zlib
