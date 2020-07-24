@@ -4,11 +4,12 @@
 EAPI=7
 
 ANURA_PATH="/usr/lib/anura"
-MY_PV="trunk"
+MY_PV="914784c01e6e2f679033c85d0fdce7a1630059dc"
+MY_PV_IMGUI="d7ce9212f1d321a1470c8ab8dceeed222c55a3ce"
 DESCRIPTION="Anura is a fully-featured game engine, free for commercial and non-commercial use"
 HOMEPAGE="https://github.com/anura-engine/anura"
 SRC_URI="https://github.com/anura-engine/anura/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/anura-engine/imgui/archive/d7ce9212f1d321a1470c8ab8dceeed222c55a3ce.tar.gz -> imgui.tar.gz"
+	https://github.com/anura-engine/imgui/archive/${MY_PV_IMGUI}.tar.gz -> imgui.tar.gz"
 
 LICENSE="ZLIB MIT"
 SLOT="0"
@@ -39,9 +40,9 @@ PATCHES=(
 
 src_unpack() {
 	unpack ${A}
-	mv anura-trunk ${P}
+	mv anura-${MY_PV} ${P}
 	rm -rf ${P}/imgui
-	mv imgui-d7ce9212f1d321a1470c8ab8dceeed222c55a3ce ${P}/imgui
+	mv imgui-${MY_PV_IMGUI} ${P}/imgui
 }
 
 src_install() {
