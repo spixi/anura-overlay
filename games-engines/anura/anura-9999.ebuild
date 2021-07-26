@@ -4,7 +4,7 @@
 EAPI=7
 
 ANURA_PATH="/usr/lib/anura"
-MY_PV="2e986f97d63e5e0f5944c8fb5e8e2513864098a6"
+MY_PV="argentum-age"
 MY_PV_IMGUI="d7ce9212f1d321a1470c8ab8dceeed222c55a3ce"
 DESCRIPTION="Anura is a fully-featured game engine, free for commercial and non-commercial use"
 HOMEPAGE="https://github.com/anura-engine/anura"
@@ -36,7 +36,6 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-cxx-flags.patch
 	"${FILESDIR}"/${PN}-9999-server-log-locations.patch
-    "${FILESDIR}"/${PN}-9999-fix-c++17.patch
 )
 
 src_unpack() {
