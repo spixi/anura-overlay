@@ -4,7 +4,7 @@
 EAPI=7
 
 ANURA_PATH="/usr/lib/anura"
-MY_PV="914784c01e6e2f679033c85d0fdce7a1630059dc"
+MY_PV="2e986f97d63e5e0f5944c8fb5e8e2513864098a6"
 MY_PV_IMGUI="d7ce9212f1d321a1470c8ab8dceeed222c55a3ce"
 DESCRIPTION="Anura is a fully-featured game engine, free for commercial and non-commercial use"
 HOMEPAGE="https://github.com/anura-engine/anura"
@@ -20,7 +20,7 @@ RDEPEND="
 	>=dev-libs/boost-1.50.0
 	!>dev-libs/boost-1.67.0
 	media-libs/libsdl2
-	>=media-libs/sdl2-image-2.0.0[png]
+	>=media-libs/sdl2-image-2.0.5[png]
 	>=media-libs/sdl2-mixer-2.0.0[vorbis]
 	>=media-libs/sdl2-2.0.12
 	media-libs/freetype
@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-cxx-flags.patch
 	"${FILESDIR}"/${PN}-9999-server-log-locations.patch
+    "${FILESDIR}"/${PN}-9999-fix-c++17.patch
 )
 
 src_unpack() {
