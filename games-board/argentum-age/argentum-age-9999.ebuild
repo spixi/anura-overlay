@@ -6,7 +6,6 @@ inherit desktop
 
 ANURA_PATH="/usr/lib/anura"
 MY_PV="trunk"
-DESCRIPTION="An open source digital collectible card game (DCCG) based on the open source Anura engine."
 HOMEPAGE="http://argentumage.com/"
 SRC_URI="https://github.com/davewx7/citadel/archive/master.tar.gz -> ${P}.tar.gz"
 
